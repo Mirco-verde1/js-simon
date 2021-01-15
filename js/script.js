@@ -7,6 +7,10 @@
 // * Individuate gli elementi di cui avete bisogno per realizzae il programma.
 
 
+
+// TIMER GIOCO IMPOSTATO A 5 SECONDI INVECE DI 30
+
+
 // funzione per numeri randomici
 function randomNumber(min, max) {
  var result = Math.floor(Math.random() * (max + 1 - min) + min);
@@ -22,7 +26,8 @@ var userInputContainer = [];
 var generatedNumber = [];
 //variabile contatore delle volte che l'utente indovinerà il Numero
 var counter = 0;
-
+//variabile contenente i numeri vincenti
+var winningNumbers = [];
 
 
 //Genero 5 numeri random popolando la variabile generatedNumber;
@@ -49,12 +54,20 @@ setTimeout(function() {
     }
     else {
       userInputContainer.push(userInput);
-    }
-    //verifico le volte che l'utente indovinerà i numeri
-    if (generatedNumber.includes(userInput)) {
-      counter++;
 
+      //verifico le volte che l'utente indovinerà i numeri
+      if (generatedNumber.includes(userInput)) {
 
+        winningNumbers.push(userInput);
+        counter++;
+
+      }
     }
-  }var result = alert('Numeri indovinati: ' + counter )
-}, 5000)//// TODO: set timer a 30 secondi successivamente
+  }
+}, 5000)//// TODO: set timer da 5 a 30 secondi successivamente
+
+//Mezzo secondo piu tardi esser finit il ciclo for comparirà il risultato
+setTimeout(function() {
+
+ var result = alert('Numeri indovinati: ' + counter + ' e sono: ' + winningNumbers);
+}, 5500);
