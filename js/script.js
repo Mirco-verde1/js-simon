@@ -14,9 +14,18 @@ function randomNumber(min, max) {
 }
 
 
-//Genero 5 numeri random e ne creo un array;
+//Numero tentativi/inserimento numero da parte dell'utente
+//Sotto array che popolerò con userInput,i numeri che l'utente inserirà;
+var inputAttempts = 5;
+var userInputContainer = [];
+//Array che popolerò con i numeri generati randomicamente
 var generatedNumber = [];
+//variabile contatore delle volte che l'utente indovinerà il Numero
+var counter = 0;
 
+
+
+//Genero 5 numeri random popolando la variabile generatedNumber;
  while (generatedNumber.length < 5) {
   var createdNumber = randomNumber(1,200)
   generatedNumber.push(createdNumber);
@@ -27,27 +36,24 @@ alert(generatedNumber);
 
 
 
-//Numero tentativi/inserimento numero da parte dell'utente
-//Sotto array che popolerò con userInput
-var inputAttempts = 5;
-var userInputContainer = [];
 
+//Chiedo all'utente di inserire 5 numeri,controllando che l'input sia di tipo numerico
+setTimeout(function() {
 
-  setTimeout(function() {
+  for (var i = 0; i < inputAttempts; i++) {
 
-    for (var i = 0; i < inputAttempts; i++) {
+    var userInput = parseInt(prompt('Inserisci i tuoi numeri!'))
 
-      var userInput = parseInt(prompt('Inserisci i tuoi numeri!'))
-    if (isNan(userInput)) {
+    if (isNaN(userInput)) {
       alert('Inserisci un valore che sia numerico!')
     }
     else {
-    userInputContainer.push(userInput);
+      userInputContainer.push(userInput);
     }
-
+    //verifico le volte che l'utente indovinerà i numeri
+    if (generatedNumber.includes(userInput)) {
+      counter++;
+      console.log(userInputContainer.length);
     }
-
-
-
-
-  }, 5000)//// TODO: set timer a 30 secondi successivamente
+  }
+}, 5000)//// TODO: set timer a 30 secondi successivamente
