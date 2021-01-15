@@ -53,7 +53,8 @@ setTimeout(function() {
     //verifico le volte che l'utente indovinerà i numeri
     if (generatedNumber.includes(userInput)) {
       counter++;
-      console.log(userInputContainer.length);
+
+
     }
-  }
+  }var result = alert('Numeri indovinati: ' + counter )
 }, 5000)//// TODO: set timer a 30 secondi successivamente
